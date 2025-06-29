@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 100
-
+#variable
 var hit_points: int = 100
 var last_direction: Vector2 = Vector2.RIGHT
 var is_attacking: bool = false
