@@ -1,5 +1,4 @@
+res://Scene/enemy.tscn
 res://Scene/game.tscn
 res://Scene/player.tscn
 res://Scene/lvl_1.tscn
-res://Scene/enemy.tscn
-res://Scipt/player.gd

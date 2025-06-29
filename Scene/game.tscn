@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bji8yp5pur7yo"]
+[gd_scene load_steps=4 format=3 uid="uid://bji8yp5pur7yo"]
 
 [ext_resource type="PackedScene" uid="uid://djf3q8r3bdmt4" path="res://Scene/lvl_1.tscn" id="1_w51g1"]
 [ext_resource type="PackedScene" uid="uid://bxtf4krlwth48" path="res://Scene/player.tscn" id="2_4jv7b"]
+[ext_resource type="PackedScene" uid="uid://b6dqse6cgfv6p" path="res://Scene/enemy.tscn" id="3_4jv7b"]
 
 [node name="Game" type="Node2D"]
 
@@ -9,3 +10,6 @@
 
 [node name="Player" parent="lvl 1" instance=ExtResource("2_4jv7b")]
 position = Vector2(-193, 37)
+
+[node name="Enemy Body" parent="lvl 1" instance=ExtResource("3_4jv7b")]
+position = Vector2(183, 54)

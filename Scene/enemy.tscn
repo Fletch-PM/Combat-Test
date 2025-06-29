@@ -247,5 +247,5 @@ frame = 15
 frame_progress = 1.0
 
 [node name="Enemy Collision" type="CollisionShape2D" parent="."]
-position = Vector2(16, -11)
+position = Vector2(17, -14)
 shape = SubResource("CapsuleShape2D_opvym")
