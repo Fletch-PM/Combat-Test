@@ -444,7 +444,8 @@ texture = ExtResource("1_pll4j")
 9:9/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_lw4ab"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 255
+physics_layer_0/collision_mask = 255
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "dungeon"
 terrain_set_0/terrain_0/color = Color(0.501961, 0.345098, 1, 1)

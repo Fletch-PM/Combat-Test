@@ -1,4 +1,5 @@
 res://Scene/enemy.tscn
+res://Scene/enemy.gd
 res://Scene/game.tscn
 res://Scene/player.tscn
 res://Scene/lvl_1.tscn
