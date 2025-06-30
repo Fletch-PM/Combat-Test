@@ -12,7 +12,8 @@
 position = Vector2(180, -11)
 
 [node name="Enemy Body2" parent="lvl 1" instance=ExtResource("3_4jv7b")]
-position = Vector2(185, 89)
+position = Vector2(185, 96)
+scale = Vector2(1.00515, 1.00306)
 
 [node name="Player" parent="." instance=ExtResource("2_4jv7b")]
 position = Vector2(-193, 37)
