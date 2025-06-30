@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=3 uid="uid://b6dqse6cgfv6p"]
 
-[ext_resource type="Script" uid="uid://cg45a0r6ybrmq" path="res://Scene/enemy.gd" id="1_n6qjc"]
+[ext_resource type="Script" uid="uid://cg45a0r6ybrmq" path="res://Scipt/enemy.gd" id="1_n6qjc"]
 [ext_resource type="Texture2D" uid="uid://dqhrfylm5wjnt" path="res://Assets/Enemy_Animations_Set/enemies-vampire_attack.png" id="1_s685e"]
 [ext_resource type="Texture2D" uid="uid://2awthupgdme4" path="res://Assets/Enemy_Animations_Set/enemies-vampire_idle.png" id="2_n6qjc"]
 [ext_resource type="Texture2D" uid="uid://bdp1n74gilr0o" path="res://Assets/Enemy_Animations_Set/enemies-vampire_movement.png" id="3_vmi60"]
@@ -234,22 +234,22 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_opvym"]
-radius = 6.0
-height = 18.0
+radius = 4.0
+height = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s685e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n6qjc"]
-radius = 13.0
+radius = 18.0278
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vmi60"]
-radius = 80.0062
+radius = 123.016
 
-[node name="Enemy Body" type="CharacterBody2D"]
+[node name="Enemy Body" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_n6qjc")
 
 [node name="Enemy Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(19, -17)
+position = Vector2(2, -2)
 sprite_frames = SubResource("SpriteFrames_cyx0v")
 animation = &"Attack"
 autoplay = "Idle"
@@ -257,26 +257,28 @@ frame = 15
 frame_progress = 1.0
 
 [node name="Enemy Collision" type="CollisionShape2D" parent="."]
-position = Vector2(16, -12)
+position = Vector2(-1, 3)
 shape = SubResource("CapsuleShape2D_opvym")
 
 [node name="Enemy Hitbox" type="Area2D" parent="."]
 
 [node name="E_Hitbox" type="CollisionShape2D" parent="Enemy Hitbox"]
-position = Vector2(16, -12)
+position = Vector2(-1, 2)
 shape = SubResource("CircleShape2D_s685e")
 
-[node name="Enemy Aggro" type="Area2D" parent="."]
+[node name="Enemy Attack" type="Area2D" parent="."]
 
-[node name="E_Aggro" type="CollisionShape2D" parent="Enemy Aggro"]
-position = Vector2(21, -15)
+[node name="E_Attack" type="CollisionShape2D" parent="Enemy Attack"]
 shape = SubResource("CircleShape2D_n6qjc")
 
 [node name="Enemy Aggro Range" type="Area2D" parent="."]
 
 [node name="Aggro_range" type="CollisionShape2D" parent="Enemy Aggro Range"]
-position = Vector2(16, -12)
+position = Vector2(-1, 2)
 shape = SubResource("CircleShape2D_vmi60")
 
+[connection signal="animation_finished" from="Enemy Sprite" to="." method="_on_enemy_sprite_animation_finished"]
+[connection signal="body_entered" from="Enemy Attack" to="." method="_on_enemy_attack_body_entered"]
+[connection signal="body_exited" from="Enemy Attack" to="." method="_on_enemy_attack_body_exited"]
 [connection signal="body_entered" from="Enemy Aggro Range" to="." method="_on_enemy_aggro_range_body_entered"]
 [connection signal="body_exited" from="Enemy Aggro Range" to="." method="_on_enemy_aggro_range_body_exited"]

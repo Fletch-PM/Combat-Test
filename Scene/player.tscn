@@ -206,10 +206,10 @@ height = 16.0
 radius = 8.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivevv"]
-radius = 12.0
-height = 26.0
+radius = 20.0
+height = 40.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_xa75v")
 
 [node name="Player Sprite" type="AnimatedSprite2D" parent="."]
@@ -236,5 +236,5 @@ shape = SubResource("CircleShape2D_58ae2")
 [node name="Player Attack Hitbox" type="Area2D" parent="."]
 
 [node name="Attack" type="CollisionShape2D" parent="Player Attack Hitbox"]
-position = Vector2(8, 0)
+position = Vector2(6, -1)
 shape = SubResource("CapsuleShape2D_ivevv")
