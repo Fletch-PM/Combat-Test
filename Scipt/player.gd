@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
 const SPEED = 100
-#variable
+
+# Variables
 var hit_points: int = 100
 var last_direction: Vector2 = Vector2.RIGHT
 var is_attacking: bool = false
 
 @onready var anim = $"Player Sprite"
-
+@onready var Attack_Hitbox = $"Player Attack Hitbox"
 
 func _physics_process(_delta: float) -> void:
 	# Reset velocity
@@ -40,18 +41,23 @@ func _physics_process(_delta: float) -> void:
 	# Normalize and apply speed
 	velocity = velocity.normalized() * SPEED
 
-	# Animation for movement
+	# Animation and direction tracking
 	if velocity.length() > 0:
 		last_direction = velocity.normalized()
 		anim.play("Move")
 	else:
 		anim.play("Idle")
 
-	# Flip sprite based on direction
+	# Flip sprite and move hitbox left/right from center
+	var flip_offset = 15  # how far you want the hitbox to shift from center
+
 	if last_direction.x < 0:
 		anim.flip_h = true
+		Attack_Hitbox.position.x = -flip_offset
 	elif last_direction.x > 0:
 		anim.flip_h = false
-	
+		Attack_Hitbox.position.x = flip_offset
+
+
 	# Move the character
 	move_and_slide()

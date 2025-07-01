@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 75
+var hit_points: int = 100
 var chase_player = false
 var attack_player = false
 var is_attacking = false
@@ -30,7 +31,6 @@ func _on_enemy_attack_body_entered(body: Node2D) -> void:
 
 func _on_enemy_attack_body_exited(body: Node2D) -> void:
 	if body == player:
-		player = null
 		attack_player = false
 
 #check if Attack animation is finished
@@ -40,7 +40,7 @@ func _on_animation_finished():
 		if chase_player and player:
 			anim.play("Move")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if is_attacking:
 		velocity = Vector2.ZERO
 		return
@@ -58,12 +58,15 @@ func _physics_process(delta: float) -> void:
 		velocity = direction * SPEED
 
 # Flip the sprite and hitbox
+
 		if direction.x != 0:
 			var facing_left = direction.x < 0
 			anim.flip_h = facing_left
+			hitbox.position = Vector2(15, 0)
 
 			var hitbox_offset = abs(hitbox.position.x)
 			hitbox.position.x = -hitbox_offset if facing_left else hitbox_offset
+		
 #play Move Animation
 		anim.play("Move")
 #play Idle Animation
