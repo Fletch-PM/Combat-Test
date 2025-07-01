@@ -1,10 +1,11 @@
-[gd_scene load_steps=52 format=3 uid="uid://bxtf4krlwth48"]
+[gd_scene load_steps=58 format=3 uid="uid://bxtf4krlwth48"]
 
 [ext_resource type="Texture2D" uid="uid://cpeuv7sg5e3o3" path="res://Assets/Enemy_Animations_Set/enemies-skeleton1_idle.png" id="1_kelma"]
 [ext_resource type="Script" uid="uid://brl51qh3ty0id" path="res://Scipt/player.gd" id="1_xa75v"]
 [ext_resource type="Texture2D" uid="uid://ccjadho446vw6" path="res://Assets/Enemy_Animations_Set/enemies-skeleton1_attack.png" id="2_58ae2"]
 [ext_resource type="Texture2D" uid="uid://b25ps6u1bytjt" path="res://Assets/Enemy_Animations_Set/enemies-skeleton1_movement.png" id="2_y8w33"]
 [ext_resource type="Texture2D" uid="uid://cj1e3fayjb2s6" path="res://Assets/Enemy_Animations_Set/enemies-skeleton1_death.png" id="3_ivevv"]
+[ext_resource type="Texture2D" uid="uid://bmrs5hnjq2n5g" path="res://Assets/Enemy_Animations_Set/enemies-skeleton1_take_damage.png" id="3_r6jsd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgjog"]
 atlas = ExtResource("2_58ae2")
@@ -41,6 +42,26 @@ region = Rect2(224, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_wfp4b"]
 atlas = ExtResource("2_58ae2")
 region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4me7"]
+atlas = ExtResource("3_r6jsd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m38ty"]
+atlas = ExtResource("3_r6jsd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3k0r"]
+atlas = ExtResource("3_r6jsd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enslk"]
+atlas = ExtResource("3_r6jsd")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmdkp"]
+atlas = ExtResource("3_r6jsd")
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8jg3e"]
 atlas = ExtResource("3_ivevv")
@@ -210,6 +231,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_j4me7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m38ty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3k0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enslk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmdkp")
+}],
+"loop": false,
+"name": &"Damaged",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8jg3e")
 }, {
 "duration": 1.0,
@@ -323,9 +364,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ij4jb"]
-radius = 4.0
-height = 16.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_r6jsd"]
+radius = 7.07107
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_58ae2"]
 radius = 8.0
@@ -340,16 +380,14 @@ script = ExtResource("1_xa75v")
 [node name="Player Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_2sw5t")
-animation = &"Death"
+animation = &"Damaged"
 autoplay = "Idle"
-frame = 16
+frame = 4
 frame_progress = 1.0
 
-[node name="Player Camera" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
-
 [node name="Player Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_ij4jb")
+position = Vector2(-2, 1)
+shape = SubResource("CircleShape2D_r6jsd")
 
 [node name="Player HitBox" type="Area2D" parent="."]
 
@@ -360,5 +398,6 @@ shape = SubResource("CircleShape2D_58ae2")
 position = Vector2(-66, 34)
 
 [node name="Attack" type="CollisionShape2D" parent="Player Attack Hitbox"]
-position = Vector2(2, -35)
+visibility_layer = 1023
+position = Vector2(0, -35)
 shape = SubResource("CapsuleShape2D_ivevv")

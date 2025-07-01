@@ -7,13 +7,22 @@
 [node name="Game" type="Node2D"]
 
 [node name="lvl 1" parent="." instance=ExtResource("1_w51g1")]
+position = Vector2(-479, 676)
 
-[node name="Enemy Body" parent="lvl 1" instance=ExtResource("3_4jv7b")]
-position = Vector2(180, -11)
+[node name="Game Camera" type="Camera2D" parent="."]
+position = Vector2(-287, 338)
+scale = Vector2(0.695726, 0.550055)
+zoom = Vector2(3, 1.848)
+limit_top = -10000002
 
-[node name="Enemy Body2" parent="lvl 1" instance=ExtResource("3_4jv7b")]
-position = Vector2(185, 96)
+[node name="Enemy Body2" parent="." instance=ExtResource("3_4jv7b")]
+position = Vector2(-122, 341)
 scale = Vector2(1.00515, 1.00306)
 
+[node name="Enemy Body" parent="." instance=ExtResource("3_4jv7b")]
+position = Vector2(-455, 335)
+
 [node name="Player" parent="." instance=ExtResource("2_4jv7b")]
-position = Vector2(-184, 42)
+top_level = true
+visibility_layer = 1023
+position = Vector2(-287, 339)
