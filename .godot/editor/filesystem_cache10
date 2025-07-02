@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1751353378
+::res://::1751447531
 icon.svg::CompressedTexture2D/CompressedTexture2D::2958931005826843972::1751208305::1751208340::1::::<><><>0<>0<>8e3e61edcd070d99f347fb466974f5e2<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 ::res://Assets/::1751208305
 ::res://Assets/2D Pixel Dungeon Asset Pack/::1751208340
@@ -244,12 +244,12 @@ enemies-vampire_death.png::CompressedTexture2D/CompressedTexture2D::901642584415
 enemies-vampire_idle.png::CompressedTexture2D/CompressedTexture2D::1896468881401150253::1751208305::1751208340::1::::<><><>0<>0<>1e5b38506abd53df09eabe29937560d6<>res://.godot/imported/enemies-vampire_idle.png-98412a74cd9f5a60565148e5e4da2194.ctex::
 enemies-vampire_movement.png::CompressedTexture2D/CompressedTexture2D::2629556463881075324::1751208305::1751208340::1::::<><><>0<>0<>627e8ae7765160a46151f44fd3d2086d<>res://.godot/imported/enemies-vampire_movement.png-18eef56a7c6d56fb54efd09eefeb3c32.ctex::
 enemies-vampire_take_damage.png::CompressedTexture2D/CompressedTexture2D::5816226533268623545::1751208305::1751208340::1::::<><><>0<>0<>38a10861800ee76c73c77563332a0407<>res://.godot/imported/enemies-vampire_take_damage.png-31403f0da36239e4628322d119b3bcc0.ctex::
-::res://Scene/::1751346424
-enemy.tscn::PackedScene::4569471843990284041::1751346424::0::1::::<><><>0<>0<><>::uid://cg45a0r6ybrmq::::res://Scipt/enemy.gd<>uid://dqhrfylm5wjnt::::res://Assets/Enemy_Animations_Set/enemies-vampire_attack.png<>uid://2awthupgdme4::::res://Assets/Enemy_Animations_Set/enemies-vampire_idle.png<>uid://bdp1n74gilr0o::::res://Assets/Enemy_Animations_Set/enemies-vampire_movement.png
-game.tscn::PackedScene::3036682653186230246::1751346423::0::1::::<><><>0<>0<><>::uid://djf3q8r3bdmt4::::res://Scene/lvl_1.tscn<>uid://bxtf4krlwth48::::res://Scene/player.tscn<>uid://b6dqse6cgfv6p::::res://Scene/enemy.tscn
-lvl_1.tscn::PackedScene::7803013941897723323::1751346424::0::1::::<><><>0<>0<><>::uid://c0vp6oda5x1wv::::res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png
-player.tscn::PackedScene::4040343189707177391::1751346423::0::1::::<><><>0<>0<><>::uid://cpeuv7sg5e3o3::::res://Assets/Enemy_Animations_Set/enemies-skeleton1_idle.png<>uid://brl51qh3ty0id::::res://Scipt/player.gd<>uid://ccjadho446vw6::::res://Assets/Enemy_Animations_Set/enemies-skeleton1_attack.png<>uid://b25ps6u1bytjt::::res://Assets/Enemy_Animations_Set/enemies-skeleton1_movement.png<>uid://cj1e3fayjb2s6::::res://Assets/Enemy_Animations_Set/enemies-skeleton1_death.png
-::res://Scipt/::1751346423
-enemy.gd::GDScript::5255664234651182100::1751346375::0::1::::<>CharacterBody2D<><>0<>0<><>::
-player.gd::GDScript::3604207973744618279::1751346423::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://Scene/::1751357821
+enemy.tscn::PackedScene::4569471843990284041::1751357821::0::1::::<><><>0<>0<><>::uid://cg45a0r6ybrmq::::res://Scipt/enemy.gd<>uid://dqhrfylm5wjnt::::res://Assets/Enemy_Animations_Set/enemies-vampire_attack.png<>uid://2awthupgdme4::::res://Assets/Enemy_Animations_Set/enemies-vampire_idle.png<>uid://bdp1n74gilr0o::::res://Assets/Enemy_Animations_Set/enemies-vampire_movement.png
+game.tscn::PackedScene::3036682653186230246::1751357821::0::1::::<><><>0<>0<><>::uid://djf3q8r3bdmt4::::res://Scene/lvl_1.tscn<>uid://bxtf4krlwth48::::res://Scene/player.tscn<>uid://b6dqse6cgfv6p::::res://Scene/enemy.tscn
+lvl_1.tscn::PackedScene::7803013941897723323::1751357821::0::1::::<><><>0<>0<><>::uid://c0vp6oda5x1wv::::res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png
+player.tscn::PackedScene::4040343189707177391::1751357821::0::1::::<><><>0<>0<><>::uid://cpeuv7sg5e3o3::::res://Assets/Enemy_Animations_Set/enemies-skeleton1_idle.png<>uid://brl51qh3ty0id::::res://Scipt/player.gd<>uid://ccjadho446vw6::::res://Assets/Enemy_Animations_Set/enemies-skeleton1_attack.png<>uid://b25ps6u1bytjt::::res://Assets/Enemy_Animations_Set/enemies-skeleton1_movement.png<>uid://cj1e3fayjb2s6::::res://Assets/Enemy_Animations_Set/enemies-skeleton1_death.png<>uid://bmrs5hnjq2n5g::::res://Assets/Enemy_Animations_Set/enemies-skeleton1_take_damage.png
+::res://Scipt/::1751357032
+enemy.gd::GDScript::5255664234651182100::1751356441::0::1::::<>CharacterBody2D<><>0<>0<><>::
+player.gd::GDScript::3604207973744618279::1751357032::0::1::::<>CharacterBody2D<><>0<>0<><>::
 ::res://Tilemaps/::1750732687

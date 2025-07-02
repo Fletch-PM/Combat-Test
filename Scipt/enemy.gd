@@ -37,7 +37,7 @@ func _on_enemy_attack_body_exited(body: Node2D) -> void:
 
 func _deal_damage():
 	if player and player.has_method("take_damage"):
-		player.take_damage(20)
+		player.take_damage(50)
 		print("Enemy dealt damage to player!")
 	can_attack = false
 	attack_timer.start()

@@ -397,7 +397,11 @@ shape = SubResource("CircleShape2D_58ae2")
 [node name="Player Attack Hitbox" type="Area2D" parent="."]
 position = Vector2(-66, 34)
 
-[node name="Attack" type="CollisionShape2D" parent="Player Attack Hitbox"]
+[node name="Attack" type="CollisionShape2D" parent="Player Attack Hitbox" groups=["Player"]]
 visibility_layer = 1023
 position = Vector2(0, -35)
 shape = SubResource("CapsuleShape2D_ivevv")
+
+[node name="Attack Timer" type="Timer" parent="." groups=["Player"]]
+
+[connection signal="timeout" from="Attack Timer" to="." method="_on_attack_timer_timeout"]
