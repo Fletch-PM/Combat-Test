@@ -1,21 +1,83 @@
 extends CharacterBody2D
 
-const SPEED = 75
-var hit_points: int = 100
-var chase_player = false
-var attack_player = false
-var is_attacking = false
-var can_attack: bool = true
+const SPEED = 50
+
 var player: CharacterBody2D = null
+var chase_player: bool = false
+var player_in_attack_range: bool = false
+var health: int = 50
+var taking_damage: bool = false
+var is_dead: bool = false
+var attack_damage = 20
+var attacking = false
+var can_attack = true  # Cooldown flag
 
 @onready var anim: AnimatedSprite2D = $"Enemy Sprite"
-@onready var hitbox: Area2D = $"Enemy Attack"
-@onready var attack_timer: Timer = $"Attack Timer"
+@onready var Attack_Hitbox = $"Enemy Attack"
+@onready var attack_cooldown: Timer = $"Attack Timer"
+@onready var Knockback = $"Knockback Timer"
 
 func _ready():
-	anim.connect("animation_finished", self._on_animation_finished)
-	attack_timer.connect("timeout", _on_attack_timer_timeout)
+	add_to_group("Enemy")
 
+func _physics_process(_delta: float) -> void:
+	if is_dead:
+		return
+
+	if attacking:
+		velocity = Vector2.ZERO
+	else:
+		if chase_player and player:
+			var direction = (player.position - position).normalized()
+			velocity = direction * SPEED
+
+			if direction.x != 0:
+				anim.flip_h = direction.x < 0
+
+			anim.play("Move")
+		else:
+			velocity = Vector2.ZERO
+			anim.play("Idle")
+
+	move_and_slide()
+#End of Chase Player Logic
+
+#Attack Logic
+func _on_enemy_attack_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player") and body.has_method("damage"):
+		player_in_attack_range = true
+		if not attacking and can_attack:
+			_start_attack(body)
+
+func _on_enemy_attack_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		player_in_attack_range = false
+
+func _start_attack(target: Node2D) -> void:
+	if is_dead or attacking or not can_attack:
+		return
+
+	attacking = true
+	can_attack = false  # Block next attack until cooldown ends
+	anim.play("Attack")
+	await anim.animation_finished
+
+	if target and target.is_inside_tree():
+		target.damage(attack_damage)
+		print("Enemy dealt", attack_damage, "damage to player.")
+
+	attacking = false
+	attack_cooldown.start()  # Start cooldown
+
+#Attack Cooldown
+func _on_attack_timer_timeout() -> void:
+	can_attack = true
+
+	if player_in_attack_range and player and not is_dead:
+		_start_attack(player)
+#End of Attack Logic
+
+#Chase Player Logic
 func _on_enemy_aggro_range_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
 		player = body
@@ -26,61 +88,23 @@ func _on_enemy_aggro_range_body_exited(body: Node) -> void:
 		player = null
 		chase_player = false
 
-func _on_enemy_attack_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		player = body
-		attack_player = true
-
-func _on_enemy_attack_body_exited(body: Node2D) -> void:
-	if body == player:
-		attack_player = false
-
-func _deal_damage():
-	if player and player.has_method("take_damage"):
-		player.take_damage(50)
-		print("Enemy dealt damage to player!")
-	can_attack = false
-	attack_timer.start()
-
-func _on_attack_timer_timeout() -> void:
-	can_attack = true
-
-func _on_animation_finished():
-	if anim.animation == "Attack":
-		is_attacking = false
-
-		# Deal damage *after* animation ends, if player still in hitbox
-		if attack_player and can_attack and player and hitbox.get_overlapping_bodies().has(player):
-			_deal_damage()
-
-		if chase_player and player:
-			anim.play("Move")
-
-func _physics_process(_delta: float) -> void:
-	if is_attacking:
-		velocity = Vector2.ZERO
+#Taking Damage Logic
+func damage(attack_damage: int) -> void:
+	if is_dead:
 		return
 
-	if attack_player and can_attack:
-		is_attacking = true
-		anim.play("Attack")
-		velocity = Vector2.ZERO
-		return
+	health -= attack_damage
+	taking_damage = true
+	anim.play("Damaged")
+	print("Enemy is taking", attack_damage, "damage! Current HP:", health)
 
-	if chase_player and player:
-		var direction = (player.position - position).normalized()
-		velocity = direction * SPEED
+	if health <= 0:
+		die()
 
-		if direction.x != 0:
-			var facing_left = direction.x < 0
-			anim.flip_h = facing_left
-			hitbox.position = Vector2(15, 0)
-			var hitbox_offset = abs(hitbox.position.x)
-			hitbox.position.x = -hitbox_offset if facing_left else hitbox_offset
-
-		anim.play("Move")
-	else:
-		velocity = Vector2.ZERO
-		anim.play("Idle")
-
-	move_and_slide()
+func die() -> void:
+	is_dead = true
+	velocity = Vector2.ZERO
+	anim.play("Death")
+	await anim.animation_finished
+	queue_free()
+#End of Taking Damage Logic

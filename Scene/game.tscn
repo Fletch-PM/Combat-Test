@@ -15,14 +15,13 @@ scale = Vector2(0.695726, 0.550055)
 zoom = Vector2(3, 1.848)
 limit_top = -10000002
 
-[node name="Enemy Body2" parent="." instance=ExtResource("3_4jv7b")]
-position = Vector2(-122, 341)
-scale = Vector2(1.00515, 1.00306)
-
-[node name="Enemy Body" parent="." instance=ExtResource("3_4jv7b")]
-position = Vector2(-455, 335)
-
 [node name="Player" parent="." instance=ExtResource("2_4jv7b")]
 top_level = true
 visibility_layer = 1023
-position = Vector2(-287, 339)
+position = Vector2(-286, 340)
+
+[node name="Enemy Body" parent="." instance=ExtResource("3_4jv7b")]
+position = Vector2(-134, 338)
+
+[node name="Enemy Body2" parent="." instance=ExtResource("3_4jv7b")]
+position = Vector2(-422, 335)

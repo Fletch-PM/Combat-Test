@@ -397,11 +397,15 @@ shape = SubResource("CircleShape2D_58ae2")
 [node name="Player Attack Hitbox" type="Area2D" parent="."]
 position = Vector2(-66, 34)
 
-[node name="Attack" type="CollisionShape2D" parent="Player Attack Hitbox" groups=["Player"]]
+[node name="Attack" type="CollisionShape2D" parent="Player Attack Hitbox"]
 visibility_layer = 1023
-position = Vector2(0, -35)
+position = Vector2(65, -33)
 shape = SubResource("CapsuleShape2D_ivevv")
 
 [node name="Attack Timer" type="Timer" parent="." groups=["Player"]]
+wait_time = 0.8
 
+[connection signal="animation_finished" from="Player Sprite" to="." method="_on_player_sprite_animation_finished"]
+[connection signal="body_entered" from="Player Attack Hitbox" to="." method="_on_player_attack_hitbox_body_entered"]
+[connection signal="body_exited" from="Player Attack Hitbox" to="." method="_on_player_attack_hitbox_body_exited"]
 [connection signal="timeout" from="Attack Timer" to="." method="_on_attack_timer_timeout"]
