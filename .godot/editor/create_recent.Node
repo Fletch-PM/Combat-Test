@@ -1,4 +1,7 @@
+Node
+Window
 Timer
+Marker2D
 Camera2D
 CollisionShape2D
 Area2D

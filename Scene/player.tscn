@@ -378,7 +378,8 @@ height = 40.0
 script = ExtResource("1_xa75v")
 
 [node name="Player Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(1, -4)
+scale = Vector2(1.0625, 1.03125)
 sprite_frames = SubResource("SpriteFrames_2sw5t")
 animation = &"Damaged"
 autoplay = "Idle"
@@ -386,6 +387,7 @@ frame = 4
 frame_progress = 1.0
 
 [node name="Player Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-2, 1)
 shape = SubResource("CircleShape2D_r6jsd")
 

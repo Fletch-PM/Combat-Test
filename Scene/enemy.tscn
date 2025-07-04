@@ -394,7 +394,8 @@ radius = 283.044
 script = ExtResource("1_n6qjc")
 
 [node name="Enemy Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, -2)
+position = Vector2(3, -1.5)
+scale = Vector2(1.0625, 1.03125)
 sprite_frames = SubResource("SpriteFrames_cyx0v")
 animation = &"Attack"
 autoplay = "Idle"
@@ -413,6 +414,7 @@ shape = SubResource("CircleShape2D_s685e")
 [node name="Enemy Attack" type="Area2D" parent="."]
 
 [node name="E_Attack" type="CollisionShape2D" parent="Enemy Attack"]
+position = Vector2(-1, 1)
 shape = SubResource("CircleShape2D_n6qjc")
 
 [node name="Enemy Aggro Range" type="Area2D" parent="." groups=["Enemy"]]
