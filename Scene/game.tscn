@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bji8yp5pur7yo"]
+[gd_scene load_steps=6 format=3 uid="uid://bji8yp5pur7yo"]
 
 [ext_resource type="PackedScene" uid="uid://jpvhubfquo7p" path="res://Scene/game_manager.tscn" id="1_03iqk"]
 [ext_resource type="PackedScene" uid="uid://djf3q8r3bdmt4" path="res://Scene/lvl_1.tscn" id="1_w51g1"]
 [ext_resource type="PackedScene" uid="uid://bxtf4krlwth48" path="res://Scene/player.tscn" id="2_4jv7b"]
 [ext_resource type="PackedScene" uid="uid://0ytjthayx6wg" path="res://Scene/enemy_spawner.tscn" id="4_03iqk"]
+[ext_resource type="AudioStream" uid="uid://dnqpvflpjodip" path="res://Music/Soul of Cinder (8-bit) - Dark Souls III.mp3" id="5_ihreq"]
 
 [node name="Game" type="Node"]
 
@@ -45,6 +46,11 @@ offset_top = -1.0
 offset_right = 110.0
 offset_bottom = 22.0
 text = "HP: 200"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ihreq")
+volume_db = 0.7
+autoplay = true
 
 [connection signal="score_reached_100" from="GameManager" to="GameManager/Enemy Spawner" method="_on_game_manager_score_reached_100"]
 [connection signal="score_reached_150" from="GameManager" to="GameManager/Enemy Spawner" method="_on_game_manager_score_reached_150"]

@@ -12,6 +12,9 @@ var bodies_in_attack_area: Array = []
 
 signal minushealth
 
+@onready var hitaudio: AudioStreamPlayer2D = $Hit
+@onready var deathaudio: AudioStreamPlayer2D = $Death
+@onready var slashaudio: AudioStreamPlayer2D = $Slash
 @onready var game_manager: Node = get_node("/root/Game/GameManager")
 @onready var anim = $"Player Sprite"
 @onready var Attack_Hitbox = $"Player Attack Hitbox"
@@ -70,6 +73,7 @@ func _process(_delta: float) -> void:
 func _start_attack() -> void:
 	attacking = true
 	anim.play("Attack")
+	slashaudio.play()
 	attack_timer.start()
 
 	for body in bodies_in_attack_area:
@@ -101,10 +105,12 @@ func damage(attack_damage: int) -> void:
 	else:
 		emit_signal("minushealth")
 		anim.play("Damaged")
+		hitaudio.play()
 
 func die() -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
 	emit_signal("minushealth")
 	anim.play("Death")
+	deathaudio.play()
 	await anim.animation_finished

@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bxtf4krlwth48"]
+[gd_scene load_steps=61 format=3 uid="uid://bxtf4krlwth48"]
 
 [ext_resource type="Texture2D" uid="uid://cpeuv7sg5e3o3" path="res://Assets/Enemy_Animations_Set/enemies-skeleton1_idle.png" id="1_kelma"]
 [ext_resource type="Script" uid="uid://brl51qh3ty0id" path="res://Scipt/player.gd" id="1_xa75v"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://b25ps6u1bytjt" path="res://Assets/Enemy_Animations_Set/enemies-skeleton1_movement.png" id="2_y8w33"]
 [ext_resource type="Texture2D" uid="uid://cj1e3fayjb2s6" path="res://Assets/Enemy_Animations_Set/enemies-skeleton1_death.png" id="3_ivevv"]
 [ext_resource type="Texture2D" uid="uid://bmrs5hnjq2n5g" path="res://Assets/Enemy_Animations_Set/enemies-skeleton1_take_damage.png" id="3_r6jsd"]
+[ext_resource type="AudioStream" uid="uid://dho4m0e62edvq" path="res://Music/slash.mp3" id="7_p6qlh"]
+[ext_resource type="AudioStream" uid="uid://pg3xrh4bcqqv" path="res://Music/Death.mp3" id="8_ij4jb"]
+[ext_resource type="AudioStream" uid="uid://bfajoeqtijbol" path="res://Music/Damage.mp3" id="9_ij4jb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgjog"]
 atlas = ExtResource("2_58ae2")
@@ -406,6 +409,15 @@ shape = SubResource("CapsuleShape2D_ivevv")
 
 [node name="Attack Timer" type="Timer" parent="." groups=["Player"]]
 wait_time = 0.8
+
+[node name="Slash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_p6qlh")
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ij4jb")
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ij4jb")
 
 [connection signal="animation_finished" from="Player Sprite" to="." method="_on_player_sprite_animation_finished"]
 [connection signal="body_entered" from="Player Attack Hitbox" to="." method="_on_player_attack_hitbox_body_entered"]
