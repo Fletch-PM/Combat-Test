@@ -1,8 +1,11 @@
 res://Scene/game.tscn
-res://Scene/enemy_spawner.tscn
+res://Scipt/enemy.gd
 res://Scene/player.tscn
 res://Scene/lvl_1.tscn
 res://Scene/enemy.tscn
-res://Scene/enemy_spawner.gd
+res://Scene/enemy_spawner.tscn
+res://Scene/game_manager.gd
+res://Scipt/player.gd
+res://Scene/game_manager.tscn
+res://Scipt/game_manager.gd
 res://Scipt/enemy_spawner.gd
-res://Scipt/enemy.gd

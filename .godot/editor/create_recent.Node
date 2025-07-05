@@ -1,6 +1,7 @@
+Label
 Node
-Window
 Timer
+Window
 Marker2D
 Camera2D
 CollisionShape2D

@@ -41,3 +41,19 @@ func _on_spawn_timer_timeout() -> void:
 	main.add_child(vampire)
 
 	print("Spawned enemy at ", vampire.position)
+	
+func _on_game_manager_score_reached_50() -> void:
+	$SpawnTimer.wait_time = 4.0 
+	print("Score reached 50! SpawnTimer set to 4 second.")
+	
+func _on_game_manager_score_reached_100() -> void:
+	$SpawnTimer.wait_time = 3.0 
+	print("Score reached 100! SpawnTimer set to 3 second.")
+
+func _on_game_manager_score_reached_150() -> void:
+	$SpawnTimer.wait_time = 2.0 
+	print("Score reached 150! SpawnTimer set to 2 second.")
+
+func _on_game_manager_score_reached_200() -> void:
+	$SpawnTimer.wait_time = 1.0 
+	print("Score reached 200! SpawnTimer set to 1 second.")
