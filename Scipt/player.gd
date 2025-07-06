@@ -10,6 +10,7 @@ var taking_damage: bool = false
 var is_dead: bool = false
 var bodies_in_attack_area: Array = []
 
+signal shakedamage
 signal minushealth
 
 @onready var hitaudio: AudioStreamPlayer2D = $Hit
@@ -79,7 +80,6 @@ func _start_attack() -> void:
 	for body in bodies_in_attack_area:
 		if body != null and body.is_in_group("Enemy") and body.has_method("damage"):
 			body.damage(attack_damage)
-
 func _on_player_attack_hitbox_body_entered(body: Node2D) -> void:
 	if not bodies_in_attack_area.has(body):
 		bodies_in_attack_area.append(body)
@@ -103,6 +103,7 @@ func damage(attack_damage: int) -> void:
 	if health <= 0:
 		die()
 	else:
+		emit_signal("shakedamage")
 		emit_signal("minushealth")
 		anim.play("Damaged")
 		hitaudio.play()

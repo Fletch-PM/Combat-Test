@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bji8yp5pur7yo"]
+[gd_scene load_steps=7 format=3 uid="uid://bji8yp5pur7yo"]
 
 [ext_resource type="PackedScene" uid="uid://jpvhubfquo7p" path="res://Scene/game_manager.tscn" id="1_03iqk"]
 [ext_resource type="PackedScene" uid="uid://djf3q8r3bdmt4" path="res://Scene/lvl_1.tscn" id="1_w51g1"]
 [ext_resource type="PackedScene" uid="uid://bxtf4krlwth48" path="res://Scene/player.tscn" id="2_4jv7b"]
+[ext_resource type="Script" uid="uid://dj11et5uygou2" path="res://Scene/game_camera.gd" id="3_thj8p"]
 [ext_resource type="PackedScene" uid="uid://0ytjthayx6wg" path="res://Scene/enemy_spawner.tscn" id="4_03iqk"]
 [ext_resource type="AudioStream" uid="uid://dnqpvflpjodip" path="res://Music/Soul of Cinder (8-bit) - Dark Souls III.mp3" id="5_ihreq"]
 
@@ -15,10 +16,13 @@ unique_name_in_owner = true
 position = Vector2(22, 486)
 
 [node name="Game Camera" type="Camera2D" parent="GameManager"]
+unique_name_in_owner = true
 position = Vector2(213, 146)
 scale = Vector2(0.695726, 0.550055)
 zoom = Vector2(3, 1.848)
+process_callback = 0
 limit_top = -10000002
+script = ExtResource("3_thj8p")
 
 [node name="Player" parent="GameManager" instance=ExtResource("2_4jv7b")]
 top_level = true
@@ -57,3 +61,4 @@ autoplay = true
 [connection signal="score_reached_200" from="GameManager" to="GameManager/Enemy Spawner" method="_on_game_manager_score_reached_200"]
 [connection signal="score_reached_50" from="GameManager" to="GameManager/Enemy Spawner" method="_on_game_manager_score_reached_50"]
 [connection signal="minushealth" from="GameManager/Player" to="GameManager" method="_on_player_minushealth"]
+[connection signal="shakedamage" from="GameManager/Player" to="GameManager/Game Camera" method="_on_player_shakedamage"]

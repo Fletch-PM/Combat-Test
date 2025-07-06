@@ -14,7 +14,9 @@ var attacking = false
 var can_attack = true  # Cooldown flag
 
 signal add_point
+signal shakeattack
 
+@onready var game_camera: Camera2D = get_node("/root/Game/GameManager/Game Camera")
 @onready var game_manager: Node = get_node("/root/Game/GameManager")
 @onready var anim: AnimatedSprite2D = $"Enemy Sprite"
 @onready var Attack_Hitbox = $"Enemy Attack"
@@ -101,6 +103,8 @@ func damage(attack_damage: int) -> void:
 	health -= attack_damage
 	taking_damage = true
 	anim.play("Damaged")
+	emit_signal("shakeattack")
+	game_camera.shakeattack()
 	print("Enemy is taking", attack_damage, "damage! Current HP:", health)
 
 	if health <= 0:
