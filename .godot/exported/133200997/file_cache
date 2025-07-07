@@ -1,0 +1,6 @@
+res://Scene/enemy.tscn::33ae94e1937fec3591ef189cafc2505a::1751883064::res://.godot/exported/133200997/export-1dd0cde57480c0265d9872f9d173d40a-enemy.scn
+res://Scene/enemy_spawner.tscn::17479e981c4cbbed00b4a7b5cd0af709::1751883064::res://.godot/exported/133200997/export-6ce5c6f97c3c9952df2ed1a595b5d10c-enemy_spawner.scn
+res://Scene/game.tscn::10ed2897a6fb116f085d8071a4ea778f::1751883063::res://.godot/exported/133200997/export-3c636b806aa9ba0a0547fbcdae143120-game.scn
+res://Scene/game_manager.tscn::270181213b5ffd65e07854b9efdb2a2d::1751883064::res://.godot/exported/133200997/export-5ddab67b9173a8b4ea3d90b3a18839f4-game_manager.scn
+res://Scene/lvl_1.tscn::d09d7366c153d311f55c21d825006669::1751883063::res://.godot/exported/133200997/export-d8cf0e0896b437a31eb0cf02872bb839-lvl_1.scn
+res://Scene/player.tscn::54542c210b4291a6002d64413da8bf30::1751883063::res://.godot/exported/133200997/export-338e31791d3fabafa55f665a3bef2a04-player.scn

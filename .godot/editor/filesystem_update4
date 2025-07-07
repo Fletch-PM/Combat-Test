@@ -5,7 +5,3 @@ res://Scene/lvl_1.tscn
 res://Scene/enemy.tscn
 res://Scene/enemy_spawner.tscn
 res://Scene/game_manager.tscn
-res://Scipt/player.gd
-res://Scipt/game_manager.gd
-res://Scipt/game_camera.gd
-res://Scipt/enemy_spawner.gd
