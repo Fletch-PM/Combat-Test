@@ -374,8 +374,7 @@ radius = 7.07107
 radius = 8.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivevv"]
-radius = 20.0
-height = 40.0
+radius = 15.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_xa75v")
@@ -395,6 +394,7 @@ position = Vector2(-2, 1)
 shape = SubResource("CircleShape2D_r6jsd")
 
 [node name="Player HitBox" type="Area2D" parent="."]
+visible = false
 
 [node name="Hitbox" type="CollisionShape2D" parent="Player HitBox"]
 shape = SubResource("CircleShape2D_58ae2")

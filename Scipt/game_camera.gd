@@ -1,9 +1,12 @@
 extends Camera2D
+#region Variables
 
 var shake_strength := 0.0
 var shake_decay := 20.0
 var original_position := Vector2.ZERO
+#endregion
 
+#region Camera Shake Logic
 func _ready() -> void:
 	original_position = position
 
@@ -21,6 +24,9 @@ func _process(delta: float) -> void:
 func shake(strength: float = 8.0, decay: float = 20.0) -> void:
 	shake_strength = strength
 	shake_decay = decay
+#endregion
+
+#region Shake Strenght
 
 # Connect this signal from Player or Enemy
 func _on_player_shakedamage() -> void:
@@ -28,3 +34,4 @@ func _on_player_shakedamage() -> void:
 
 func shakeattack():
 	shake(3.0)
+#endregion

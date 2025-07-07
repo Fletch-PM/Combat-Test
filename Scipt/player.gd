@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+#region Variables
+
 const SPEED = 100
 
 var last_direction: Vector2 = Vector2.RIGHT
@@ -21,10 +23,13 @@ signal minushealth
 @onready var Attack_Hitbox = $"Player Attack Hitbox"
 @onready var attack_timer = $"Attack Timer"
 @onready var hitbox_default_offset = Attack_Hitbox.position
+#endregion
 
 func _physics_process(_delta: float) -> void:
 	if is_dead:
 		return
+
+#region Movement and Animations
 
 	# Prevent movement during attack
 	if attacking:
@@ -65,6 +70,9 @@ func _process(_delta: float) -> void:
 			anim.play("Move")
 		else:
 			anim.play("Idle")
+#endregion
+
+#region Attack Logic
 
 	# Attack input
 	if Input.is_action_just_pressed("Attack") and not attacking:
@@ -90,7 +98,9 @@ func _on_player_attack_hitbox_body_exited(body: Node2D) -> void:
 
 func _on_attack_timer_timeout() -> void:
 	attacking = false
+#endregion
 
+#region Hitpoint logic
 # Taking Damage Logic
 func damage(attack_damage: int) -> void:
 	if is_dead:
@@ -115,3 +125,4 @@ func die() -> void:
 	anim.play("Death")
 	deathaudio.play()
 	await anim.animation_finished
+#endregion

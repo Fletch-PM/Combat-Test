@@ -1,9 +1,12 @@
 extends Node2D
 
+#region Variables
 var enemy := preload("res://Scene/enemy.tscn")
 var spawn_points: Array[Marker2D] = []
 var main: Node = null
+#endregion
 
+#region Random Spawn Logic
 func _ready() -> void:
 	randomize()
 
@@ -42,6 +45,9 @@ func _on_spawn_timer_timeout() -> void:
 
 	print("Spawned enemy at ", vampire.position)
 	
+#endregion
+#region Spawn Timer Change
+
 func _on_game_manager_score_reached_50() -> void:
 	$SpawnTimer.wait_time = 4.0 
 	print("Score reached 50! SpawnTimer set to 4 second.")
@@ -57,3 +63,4 @@ func _on_game_manager_score_reached_150() -> void:
 func _on_game_manager_score_reached_200() -> void:
 	$SpawnTimer.wait_time = 1.0 
 	print("Score reached 200! SpawnTimer set to 1 second.")
+#endregion

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 50
 
+#region Variables
 var player: CharacterBody2D = null
 var current_target: Node2D = null
 var chase_player: bool = false
@@ -21,7 +22,9 @@ signal shakeattack
 @onready var anim: AnimatedSprite2D = $"Enemy Sprite"
 @onready var Attack_Hitbox = $"Enemy Attack"
 @onready var attack_cooldown: Timer = $"Attack Timer"
+#endregion
 
+#region Enemy Movement and Animations
 func _ready():
 	add_to_group("Enemy")
 
@@ -45,14 +48,15 @@ func _physics_process(_delta: float) -> void:
 			anim.play("Idle")
 
 	move_and_slide()
+#endregion
 
+#region Attack Logic
 # Attack Logic
 func _on_enemy_attack_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and body.has_method("damage"):
 		player_in_attack_range = true
 		current_target = body
 		
-
 		if not attacking and can_attack:
 			_start_attack()
 
@@ -94,7 +98,9 @@ func _on_enemy_aggro_range_body_exited(body: Node) -> void:
 	if body == player:
 		player = null
 		chase_player = false
+#endregion
 
+#region Health Logic
 # Taking Damage Logic
 func damage(attack_damage: int) -> void:
 	if is_dead:
@@ -120,3 +126,4 @@ func die() -> void:
 	emit_signal("add_point")
 	game_manager.add_point()
 	queue_free()
+#endregion
