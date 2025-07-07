@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dnqpvflpjodip"
+path="res://.godot/imported/Soul of Cinder (8-bit) - Dark Souls III.mp3-5cfcaaf5ef763b8a93cffe5eb3da9634.mp3str"
+
+[deps]
+
+source_file="res://Music/Soul of Cinder (8-bit) - Dark Souls III.mp3"
+dest_files=["res://.godot/imported/Soul of Cinder (8-bit) - Dark Souls III.mp3-5cfcaaf5ef763b8a93cffe5eb3da9634.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

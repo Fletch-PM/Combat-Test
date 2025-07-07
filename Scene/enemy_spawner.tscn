@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://0ytjthayx6wg"]
+
+[ext_resource type="Script" uid="uid://fahhywyegm3a" path="res://Scipt/enemy_spawner.gd" id="1_es2l8"]
+
+[node name="Enemy Spawner" type="Node2D"]
+script = ExtResource("1_es2l8")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(192, 8)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(224, 8)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(256, 8)
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(58, 122)
+
+[node name="Marker2D5" type="Marker2D" parent="."]
+position = Vector2(58, 154)
+
+[node name="Marker2D6" type="Marker2D" parent="."]
+position = Vector2(58, 186)
+
+[node name="Marker2D7" type="Marker2D" parent="."]
+position = Vector2(378, 154)
+
+[node name="Marker2D8" type="Marker2D" parent="."]
+position = Vector2(378, 186)
+
+[node name="Marker2D9" type="Marker2D" parent="."]
+position = Vector2(378, 122)
+
+[node name="Marker2D10" type="Marker2D" parent="."]
+position = Vector2(256, 304)
+
+[node name="Marker2D11" type="Marker2D" parent="."]
+position = Vector2(192, 304)
+
+[node name="Marker2D12" type="Marker2D" parent="."]
+position = Vector2(224, 304)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
